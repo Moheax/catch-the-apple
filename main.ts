@@ -5,6 +5,7 @@ input.onButtonPressed(Button.B, function () {
     playerSprite.change(LedSpriteProperty.X, 1)
 })
 let playerSprite: game.LedSprite = null
+let score = 0
 playerSprite = game.createSprite(2, 4)
 let appleSprite = game.createSprite(randint(0, 4), 0)
 appleSprite.turn(Direction.Right, 90)
@@ -15,10 +16,14 @@ basic.forever(function () {
     if (appleSprite.isTouching(playerSprite)) {
         appleSprite.set(LedSpriteProperty.X, randint(0, 4))
         appleSprite.set(LedSpriteProperty.Y, 0)
-        game.addScore(1)
+        score += 1
     } else if (appleSprite.get(LedSpriteProperty.Y) == 4) {
-        game.addScore(-1)
         appleSprite.set(LedSpriteProperty.X, randint(0, 4))
         appleSprite.set(LedSpriteProperty.Y, 0)
+        score += -1
+    }
+    if (score == 10) {
+        basic.showString("W")
+        game.pause()
     }
 })

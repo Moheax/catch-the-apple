@@ -11,6 +11,9 @@ let appleSprite = game.createSprite(randint(0, 4), 0)
 appleSprite.turn(Direction.Right, 90)
 appleSprite.set(LedSpriteProperty.Brightness, 50)
 basic.forever(function () {
+	
+})
+basic.forever(function () {
     basic.pause(500)
     appleSprite.move(1)
     if (appleSprite.isTouching(playerSprite)) {
